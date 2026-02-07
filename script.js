@@ -798,8 +798,77 @@ document.getElementById('backBtn').addEventListener('click', () => {
     setTimeout(showCheckpoints, 100);
 });
 
+// ============== PRELOAD ASSETS ==============
+function preloadAssets() {
+    const loadingScreen = document.getElementById('loadingScreen');
+    const loadingProgress = document.getElementById('loadingProgress');
+    
+    // List of all GIFs to preload
+    const gifUrls = Object.values(catMemes);
+    
+    // Add GIFs from HTML
+    const allImages = document.querySelectorAll('img');
+    allImages.forEach(img => {
+        if (img.src && img.src.includes('giphy')) {
+            gifUrls.push(img.src);
+        }
+    });
+    
+    // Add audio files to preload
+    const audioFiles = [
+        'la_sirenita.mp3', 'underthesea.mp3', 'applause.mp3',
+        'padi_padi_leche.mp3', 'chipi_chapa_cat.mp3', 'dear_comrade.mp3'
+    ];
+    
+    let loaded = 0;
+    const total = gifUrls.length + audioFiles.length;
+    
+    function updateProgress() {
+        loaded++;
+        const percent = Math.min((loaded / total) * 100, 100);
+        if (loadingProgress) {
+            loadingProgress.style.width = percent + '%';
+        }
+        
+        if (loaded >= total) {
+            // All assets loaded, hide loading screen
+            setTimeout(() => {
+                if (loadingScreen) {
+                    loadingScreen.classList.add('hidden');
+                }
+            }, 500);
+        }
+    }
+    
+    // Preload GIFs
+    gifUrls.forEach(url => {
+        const img = new Image();
+        img.onload = updateProgress;
+        img.onerror = updateProgress;
+        img.src = url;
+    });
+    
+    // Preload audio
+    audioFiles.forEach(file => {
+        const audio = new Audio(file);
+        audio.oncanplaythrough = updateProgress;
+        audio.onerror = updateProgress;
+        audio.load();
+    });
+    
+    // Fallback: hide loading screen after 8 seconds max
+    setTimeout(() => {
+        if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
+            loadingScreen.classList.add('hidden');
+        }
+    }, 8000);
+}
+
 // ============== INIT ==============
 document.addEventListener('DOMContentLoaded', () => {
+    // Start preloading assets
+    preloadAssets();
+    
     createFloatingHearts();
     
     // Always start from first screen on reload
