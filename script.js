@@ -21,14 +21,14 @@ function getCurrentDate() {
 
 // ============== VALENTINE'S DAYS ==============
 const valentineDays = [
-    { date: new Date(2026, 1, 7), name: "Rose Day", emoji: "🌹" },
-    { date: new Date(2026, 1, 8), name: "Propose Day", emoji: "💍" },
-    { date: new Date(2026, 1, 9), name: "Chocolate Day", emoji: "🍫" },
-    { date: new Date(2026, 1, 10), name: "Teddy Day", emoji: "🧸" },
-    { date: new Date(2026, 1, 11), name: "Promise Day", emoji: "🤝" },
-    { date: new Date(2026, 1, 12), name: "Hug Day", emoji: "🤗" },
-    { date: new Date(2026, 1, 13), name: "Kiss Day", emoji: "💋" },
-    { date: new Date(2026, 1, 14), name: "Valentine's Day", emoji: "❤️" }
+    { date: new Date(2026, 1, 7), name: "Rose Day", emoji: "🌹", note: "Happy Rose Day ra kuchu puchuuuuu!!! Just like a rose, you make my life more beautiful every single day ❤️✨. You make my way of living beautiful ra" },
+    { date: new Date(2026, 1, 8), name: "Propose Day", emoji: "💍", note: "soon baby🙈" },
+    { date: new Date(2026, 1, 9), name: "Chocolate Day", emoji: "🍫", note: "Happy Chocolate Day ra kuchuu puchuuuu 🍫❤️ You're the only sweet thing I want daily. And I want you to get spoiled in the same way🤓 but yeaaa I still wanna get you chocolates all the timee because I'm a good boyfriend 😌😂" },
+    { date: new Date(2026, 1, 10), name: "Teddy Day", emoji: "🧸", note: "Happy Teddy Day! Here's a teddy to hug when I'm not around 🧸💝" },
+    { date: new Date(2026, 1, 11), name: "Promise Day", emoji: "🤝", note: "Happy Promise Day! I promise to always be there for you 🤝💖" },
+    { date: new Date(2026, 1, 12), name: "Hug Day", emoji: "🤗", note: "Happy Hug Day! Sending you the biggest virtual hug 🤗💕" },
+    { date: new Date(2026, 1, 13), name: "Kiss Day", emoji: "💋", note: "Happy Kiss Day! 💋😘" },
+    { date: new Date(2026, 1, 14), name: "Valentine's Day", emoji: "❤️", note: "Happy Valentine's Day my love! You mean everything to me ❤️💝" }
 ];
 
 // ============== QUESTIONS ==============
@@ -741,7 +741,11 @@ function showTooltip(event, message) {
 }
 
 // ============== GIFT REVEAL ==============
+let currentGiftDay = null; // Store current day for note reveal
+
 function showGiftReveal(day) {
+    currentGiftDay = day; // Save the day for note reveal
+    
     // Mark this gift as opened
     if (!openedGifts.includes(day.name)) {
         openedGifts.push(day.name);
@@ -782,6 +786,12 @@ function showNoteReveal() {
     switchSection(giftReveal, noteReveal);
     
     const noteIntroText = document.getElementById('noteIntroText');
+    const noteText = document.getElementById('noteText');
+    
+    // Update note text based on current day
+    if (currentGiftDay && currentGiftDay.note) {
+        noteText.textContent = currentGiftDay.note;
+    }
     
     setTimeout(() => {
         typeWriter(noteIntroText, "He got a note for youuuuu 💌", 45);
