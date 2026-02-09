@@ -24,7 +24,7 @@ const valentineDays = [
     { date: new Date(2026, 1, 7), name: "Rose Day", emoji: "🌹", time: "9:20 AM", note: "Happy Rose Day ra kuchu puchuuuuu!!! Just like a rose, you make my life more beautiful every single day ❤️✨. You make my way of living beautiful ra" },
     { date: new Date(2026, 1, 8), name: "Propose Day", emoji: "💍", time: "9:20 AM", note: "soon baby🙈" },
     { date: new Date(2026, 1, 9), name: "Chocolate Day", emoji: "🍫", time: "9 PM", note: "Happy Chocolate Day ra kuchuu puchuuuu 🍫❤️ You're the only sweet thing I want daily. And I want you to get spoiled in the same way🤓 but yeaaa I still wanna get you chocolates all the timee because I'm a good boyfriend 😌😂" },
-    { date: new Date(2026, 1, 10), name: "Teddy Day", emoji: "🧸", time: "9:20 AM", note: "Happy Teddy Day! Here's a teddy to hug when I'm not around 🧸💝" },
+    { date: new Date(2026, 1, 10), name: "Teddy Day", emoji: "🧸", time: "9:20 AM", note: "Happy Teddy Day loveee 🧸😂 Teddies are meant to sit on the bed and look cute. Nuvvu kuda alane undu please, I'll come and do full \"aww\" mode 😌❤️" },
     { date: new Date(2026, 1, 11), name: "Promise Day", emoji: "🤝", time: "9:20 AM", note: "Happy Promise Day! I promise to always be there for you 🤝💖" },
     { date: new Date(2026, 1, 12), name: "Hug Day", emoji: "🤗", time: "9:20 AM", note: "Happy Hug Day! Sending you the biggest virtual hug 🤗💕" },
     { date: new Date(2026, 1, 13), name: "Kiss Day", emoji: "💋", time: "9:20 AM", note: "Happy Kiss Day! 💋😘" },
@@ -34,14 +34,16 @@ const valentineDays = [
 // ============== QUESTIONS ==============
 const questions = [
     {
-        text: "I know he calls you with lots of names but what is the most common name he uses to address you? 🤔",
-        answer: "puppy"
+        text: "What is the second most favorite thing for me in you (looks). You know the first one obviously😗... (actually there are 2 so yea answer one here and second one in next question😁)",
+        answer: ["hair", "dimples"] // Either is correct
     },
     {
-        text: "What is that one thing he's craving the second most and only you can satisfy that (first thing is obviously you🤓)?",
-        answer: "waffles"
+        text: "Answer the second one here🤓",
+        answer: null // Will be set dynamically based on first answer
     }
 ];
+
+let firstQuestionAnswer = null; // Track what was answered in question 1
 
 let currentQuestion = 0;
 let userName = '';
@@ -478,7 +480,7 @@ function startCatIntro() {
     updateBottomMeme('catIntro');
     
     const catDialogue = [
-        { text: "Who are you? 👀", mood: "asking", delay: 2500 },
+        { text: "Who are you? 🤨", mood: "asking", delay: 2500 },
         { text: "Ummmm... lemme guess...", mood: "waiting", delay: 3000 },
         { text: "You're his girl, right? 😏", mood: "asking", delay: 3000 },
         { text: "Lemme ask a couple of questions to test you!! 😼", mood: "asking", delay: 3500 }
@@ -532,9 +534,24 @@ function showQuestion() {
 
 function checkAnswer() {
     const userAnswer = answerInput.value.toLowerCase().trim();
-    const correctAnswer = questions[currentQuestion].answer.toLowerCase();
+    let isCorrect = false;
     
-    if (userAnswer === correctAnswer) {
+    if (currentQuestion === 0) {
+        // First question - accept either "hair" or "dimples"
+        const validAnswers = questions[0].answer;
+        if (validAnswers.includes(userAnswer)) {
+            isCorrect = true;
+            firstQuestionAnswer = userAnswer; // Save what they answered
+        }
+    } else if (currentQuestion === 1) {
+        // Second question - answer must be the OTHER one
+        const expectedAnswer = firstQuestionAnswer === "hair" ? "dimples" : "hair";
+        if (userAnswer === expectedAnswer) {
+            isCorrect = true;
+        }
+    }
+    
+    if (isCorrect) {
         currentQuestion++;
         
         if (currentQuestion < questions.length) {
