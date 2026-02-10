@@ -25,7 +25,7 @@ const valentineDays = [
     { date: new Date(2026, 1, 8), name: "Propose Day", emoji: "💍", time: "9:20 AM", note: "soon baby🙈" },
     { date: new Date(2026, 1, 9), name: "Chocolate Day", emoji: "🍫", time: "9 PM", note: "Happy Chocolate Day ra kuchuu puchuuuu 🍫❤️ You're the only sweet thing I want daily. And I want you to get spoiled in the same way🤓 but yeaaa I still wanna get you chocolates all the timee because I'm a good boyfriend 😌😂" },
     { date: new Date(2026, 1, 10), name: "Teddy Day", emoji: "🧸", time: "9:20 AM", note: "Happy Teddy Day loveee 🧸😂 Teddies are meant to sit on the bed and look cute. Nuvvu kuda alane undu please, I'll come and do full \"aww\" mode 😌❤️" },
-    { date: new Date(2026, 1, 11), name: "Promise Day", emoji: "🤝", time: "9:20 AM", note: "Happy Promise Day! I promise to always be there for you 🤝💖" },
+    { date: new Date(2026, 1, 11), name: "Promise Day", emoji: "🤝", time: "9:20 AM", note: "Happy promise day bangaramm🥹❤️, The first and the most important promise I want to make is to not make silly and fake promises to you and be real to myself about you💖" },
     { date: new Date(2026, 1, 12), name: "Hug Day", emoji: "🤗", time: "9:20 AM", note: "Happy Hug Day! Sending you the biggest virtual hug 🤗💕" },
     { date: new Date(2026, 1, 13), name: "Kiss Day", emoji: "💋", time: "9:20 AM", note: "Happy Kiss Day! 💋😘" },
     { date: new Date(2026, 1, 14), name: "Valentine's Day", emoji: "❤️", time: "9:20 AM", note: "Happy Valentine's Day my love! You mean everything to me ❤️💝" }
@@ -34,16 +34,15 @@ const valentineDays = [
 // ============== QUESTIONS ==============
 const questions = [
     {
-        text: "What is the second most favorite thing for me in you (looks). You know the first one obviously😗... (actually there are 2 so yea answer one here and second one in next question😁)",
-        answer: ["hair", "dimples"] // Either is correct
+        text: "Name of my best friend🤓 (should get right in the first attempt😼)",
+        answer: "sumith"
     },
     {
-        text: "Answer the second one here🤓",
-        answer: null // Will be set dynamically based on first answer
+        text: "What is the colour of my most favorite outfit of yours😗",
+        answer: "white"
     }
 ];
 
-let firstQuestionAnswer = null; // Track what was answered in question 1
 
 let currentQuestion = 0;
 let userName = '';
@@ -537,16 +536,13 @@ function checkAnswer() {
     let isCorrect = false;
     
     if (currentQuestion === 0) {
-        // First question - accept either "hair" or "dimples"
-        const validAnswers = questions[0].answer;
-        if (validAnswers.includes(userAnswer)) {
+        // First question - answer is "sumith"
+        if (userAnswer === questions[0].answer.toLowerCase()) {
             isCorrect = true;
-            firstQuestionAnswer = userAnswer; // Save what they answered
         }
     } else if (currentQuestion === 1) {
-        // Second question - answer must be the OTHER one
-        const expectedAnswer = firstQuestionAnswer === "hair" ? "dimples" : "hair";
-        if (userAnswer === expectedAnswer) {
+        // Second question - answer is "white"
+        if (userAnswer === questions[1].answer.toLowerCase()) {
             isCorrect = true;
         }
     }
