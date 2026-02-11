@@ -26,7 +26,7 @@ const valentineDays = [
     { date: new Date(2026, 1, 9), name: "Chocolate Day", emoji: "🍫", time: "9 PM", note: "Happy Chocolate Day ra kuchuu puchuuuu 🍫❤️ You're the only sweet thing I want daily. And I want you to get spoiled in the same way🤓 but yeaaa I still wanna get you chocolates all the timee because I'm a good boyfriend 😌😂" },
     { date: new Date(2026, 1, 10), name: "Teddy Day", emoji: "🧸", time: "9:20 AM", note: "Happy Teddy Day loveee 🧸😂 Teddies are meant to sit on the bed and look cute. Nuvvu kuda alane undu please, I'll come and do full \"aww\" mode 😌❤️" },
     { date: new Date(2026, 1, 11), name: "Promise Day", emoji: "🤝", time: "9:20 AM", note: "Happy promise day bangaramm🥹❤️, The first and the most important promise I want to make is to not make silly and fake promises to you and be real to myself about you💖" },
-    { date: new Date(2026, 1, 12), name: "Hug Day", emoji: "🤗", time: "9:20 AM", note: "happyyy hug day ra bangarammm💖, there's no better feeling than falling into your arms and holding you tight ra🥹❤️. It heals all my sadness, feels secure to communicate what ever i feel. My most comfort place😭💝" },
+    { date: new Date(2026, 1, 12), name: "Hug Day", emoji: "🤗", time: "9:30 PM", note: "happyyy hug day ra bangarammm💖, there's no better feeling than falling into your arms and holding you tight ra🥹❤️. It heals all my sadness, feels secure to communicate what ever i feel. My most comfort place😭💝" },
     { date: new Date(2026, 1, 13), name: "Kiss Day", emoji: "💋", time: "9:20 AM", note: "Happy Kiss Day! 💋😘" },
     { date: new Date(2026, 1, 14), name: "Valentine's Day", emoji: "❤️", time: "9:20 AM", note: "Happy Valentine's Day my love! You mean everything to me ❤️💝" }
 ];
