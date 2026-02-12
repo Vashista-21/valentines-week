@@ -27,19 +27,19 @@ const valentineDays = [
     { date: new Date(2026, 1, 10), name: "Teddy Day", emoji: "🧸", time: "9:20 AM", note: "Happy Teddy Day loveee 🧸😂 Teddies are meant to sit on the bed and look cute. Nuvvu kuda alane undu please, I'll come and do full \"aww\" mode 😌❤️" },
     { date: new Date(2026, 1, 11), name: "Promise Day", emoji: "🤝", time: "9:20 AM", note: "Happy promise day bangaramm🥹❤️, The first and the most important promise I want to make is to not make silly and fake promises to you and be real to myself about you💖" },
     { date: new Date(2026, 1, 12), name: "Hug Day", emoji: "🤗", time: "9:30 PM", note: "happyyy hug day ra bangarammm💖, there's no better feeling than falling into your arms and holding you tight ra🥹❤️. It heals all my sadness, feels secure to communicate what ever i feel. My most comfort place😭💝" },
-    { date: new Date(2026, 1, 13), name: "Kiss Day", emoji: "💋", time: "9:20 AM", note: "Happy Kiss Day! 💋😘" },
+    { date: new Date(2026, 1, 13), name: "Kiss Day", emoji: "💋", time: "9:30 PM", note: "Happyy kiss day ra kuchu puchuuu😘💖, ni okka kiss chaalu baby nenu phatt ani gallo egiripotanikii😭❤️... inka na gurinchi antava nen enni enni kissies ichinaa aa urge ponee podhu🥹🙈" },
     { date: new Date(2026, 1, 14), name: "Valentine's Day", emoji: "❤️", time: "9:20 AM", note: "Happy Valentine's Day my love! You mean everything to me ❤️💝" }
 ];
 
 // ============== QUESTIONS ==============
 const questions = [
     {
-        text: "In which year did i first saw you and in which place we were there at that moment🤓 (answer these two with a space gap between them😁)",
-        answer: "2022 railway station"
+        text: "In which class did me and my best friend first met?🤓",
+        answer: "8th"
     },
     {
-        text: "What was the first thing we shared with each other😼 (hint: It's a food item🙈)",
-        answer: "maggie"
+        text: "What was the first and only thing i gave to my crush (which was hers obviously😗)?",
+        answer: "cap"
     }
 ];
 
@@ -669,7 +669,7 @@ function showDayDisplay() {
     const dayText = document.getElementById('dayText');
     
     setTimeout(() => {
-        dayText.textContent = `Yayyyyyyy it's ${dayInfo.name}yyyyyyyy 🥳`;
+        dayText.textContent = `ummmmmmaaaaaahhhhhhhh it's ${dayInfo.name}yyyyyyyy 🥳`;
         dayText.style.animation = 'slideIn 1s ease-out';
         
         confetti({
