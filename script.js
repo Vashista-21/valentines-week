@@ -28,7 +28,7 @@ const valentineDays = [
     { date: new Date(2026, 1, 11), name: "Promise Day", emoji: "🤝", time: "9:20 AM", note: "Happy promise day bangaramm🥹❤️, The first and the most important promise I want to make is to not make silly and fake promises to you and be real to myself about you💖" },
     { date: new Date(2026, 1, 12), name: "Hug Day", emoji: "🤗", time: "9:30 PM", note: "happyyy hug day ra bangarammm💖, there's no better feeling than falling into your arms and holding you tight ra🥹❤️. It heals all my sadness, feels secure to communicate what ever i feel. My most comfort place😭💝" },
     { date: new Date(2026, 1, 13), name: "Kiss Day", emoji: "💋", time: "9:30 PM", note: "Happyy kiss day ra kuchu puchuuu😘💖, ni okka kiss chaalu baby nenu phatt ani gallo egiripotanikii😭❤️... inka na gurinchi antava nen enni enni kissies ichinaa aa urge ponee podhu🥹🙈" },
-    { date: new Date(2026, 1, 14), name: "Valentine's Day", emoji: "❤️", time: "9:20 AM", note: "Happy Valentine's Day my love! You mean everything to me ❤️💝" }
+    { date: new Date(2026, 1, 14), name: "Valentine's Day", emoji: "❤️", time: "9:20 AM", note: "Happy Valentine's Day cutuluuuuuuu 😘❤️ Being with you feels easy and special at the same time. You're my favourite person, my comfort, and my best decision. I just love you soo much bangarammm🥹💝" }
 ];
 
 // ============== QUESTIONS ==============
@@ -706,8 +706,13 @@ function showCheckpoints() {
         
         let status = 'future';
         if (today > dayDate) {
-            // Past day - always completed
-            status = 'completed';
+            // Past day - check if opened, otherwise allow opening
+            // Special: Allow Kiss Day to be opened on Valentine's Day
+            if (day.name === "Kiss Day" && !isOpened) {
+                status = 'current'; // Allow opening missed Kiss Day
+            } else {
+                status = isOpened ? 'completed' : 'current'; // Allow opening any missed past day
+            }
         } else if (today.getTime() === dayDate.getTime()) {
             // Today - check if already opened
             status = isOpened ? 'completed' : 'current';
